@@ -17,17 +17,37 @@ class Character:
         damage = min(max(randint(0, self.health) - randint(0, enemies.health), 0),enemies.health)
         enemies.health = enemies.health - damage
         if damage == 0:
-            print "The evaded %s's attack., try again, better this time.. k?" % (enemies.name)
+            print "The {} evaded the attack., try again, better this time.. k?".format(enemies.name)
         else:
             print "Take that!! **&^"
-            print " Enemies health {}".format(enemies.health)
+            print " Enemies health is {}".format(enemies.health)
         return enemies.health <= 0
 
+
 class Enemies(Character):
-  def __init__(self, player):
-    Character.__init__(self)
-    self.name = 'Goblin'
-    self.health = randint(1, player.health)
+    ##Enemies:
+    e_names = [
+    'Goblin','Slime',
+    'Barbarian', 'Cocroach',
+    'Dulalhan']
+
+    def stats(self, name):
+        if self.name == e_names[0]:
+            self.health = 60
+        elif self.name == e_names[1]:
+            self.health = 80
+        elif name == e_names[2]:
+            self.health = 100
+        elif name == e_names[3]:
+            self.health = 120
+        elif name == e_names[4]:
+            self.health = 140
+        return self.health
+
+    def __init__(self, player):
+        Character.__init__(self)
+        self.name = stats(e_names[randint(0,4)])
+        self.health = ''
 
 
 class Player(Character):
@@ -105,7 +125,7 @@ class Player(Character):
             self.tired()
         else:
             if self.do_damage(self.enemies):
-                print "%s executes %s!" % (self.username, self.enemies.name)
+                print "{} executes {}!".format(self.username, self.enemies.name)
                 self.enemies = None
                 self.state = 'refreshed'
                 if randint(0, self.health) < 10:

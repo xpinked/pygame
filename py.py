@@ -31,23 +31,23 @@ class Enemies(Character):
     'Barbarian', 'Cocroach',
     'Dulalhan']
 
+    def __init__(self, player):
+        Character.__init__()
+        self.name = self.stats(self.e_names[randint(0,4)])
+        self.health = ''
+
     def stats(self, name):
-        if self.name == e_names[0]:
+        if self.name == self.e_names[0]:
             self.health = 60
-        elif self.name == e_names[1]:
+        elif self.name == self.e_names[1]:
             self.health = 80
-        elif name == e_names[2]:
+        elif name == self.e_names[2]:
             self.health = 100
-        elif name == e_names[3]:
+        elif name == self.e_names[3]:
             self.health = 120
-        elif name == e_names[4]:
+        elif name == self.e_names[4]:
             self.health = 140
         return self.health
-
-    def __init__(self, player):
-        Character.__init__(self)
-        self.name = stats(e_names[randint(0,4)])
-        self.health = ''
 
 
 class Player(Character):

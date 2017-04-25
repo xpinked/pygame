@@ -56,7 +56,7 @@ class Player(Character, Enemies):
         print inventory
 
     def leavegame(self):
-        print " %s Baka.. Why are you leaving? hard huh...?" % self.username
+        print " {} Baka.. Why are you leaving? hard huh...?".format(self.username)
         self.health = 0
 
     def help(self):
@@ -64,12 +64,12 @@ class Player(Character, Enemies):
 
     def status(self):
         if Enemies.health > 0:
-            print "%s's health: %d/%d" % (self.username, self.health, self.health_max)
+            print "{}'s health: {}{}".format(self.username, self.health, self.health_max)
             print "{} health: {}".format(self.ename, Enemies.health)
-            print "%s's state: %d/%d" % (self.username, self.state)
+            print "{}'s state: {}".format(self.username, self.state)
         else:
-            print "%s's health: %d/%d" % (self.username, self.health, self.health_max)
-            print "%s's state: %d/%d" % (self.username, self.state)
+            print "{}'s health: {}{}".format(self.username, self.health, self.health_max)
+            print "{}'s state: {}".format(self.username, self.state)
 
     def tired(self):
         print "%s You're feeling tired, you should rest.." % self.username
